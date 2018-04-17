@@ -4,21 +4,23 @@ import Row from './row';
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
         marginTop: 20,
         flexDirection: 'row',
     },
 });
 import Data from  './data';
+import _ from 'lodash';
 
 export default class ListBooks extends Component {
     constructor(props) {
         super(props);
 
+
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.data = Data;
+        // this.data = Data;
+
         this.state = {
-            dataSource: ds.cloneWithRows([{},{},{}]),
+            dataSource: ds.cloneWithRows(_.chunk(Data, 3)),
         };
     }
     render() {
@@ -26,13 +28,12 @@ export default class ListBooks extends Component {
             <ListView
                 style={styles.container}
                 dataSource={this.state.dataSource}
-                renderRow={(data) => {
+                renderRow={(rowData) => {
                     return <View>
-                        <Row {...data}/>
+                        <Row props={rowData}/>
                     </View>
                 }}
             />
         );
     }
 }
-//            // renderRow={(data) => <Row {...data} />}
