@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+    Text,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ListBooksComponent from './js/components/listBooks/index';
@@ -22,6 +23,9 @@ export default class App extends Component<Props> {
               {/*placeholder='Какая книга?' />*/}
         {/*<ListBooksComponent/>*/}
       <Login/>
+          {/*<Text style={{color: 'red'}}>*/}
+              {/*and red*/}
+          {/*</Text>*/}
       </View>
     );
   }
