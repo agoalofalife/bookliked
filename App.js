@@ -7,7 +7,6 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
@@ -22,10 +21,12 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
           <SearchBar
               showLoading
-              placeholder='Type Here...' />
-        <Text style={styles.welcome}>
-          Welcome to Love book!
-        </Text>
+              onChangeText={() => { console.log('change text')}}
+              onClear={() => { console.log('clear text')}}
+              platform="android"
+              cancelButtonTitle="Cancel"
+              placeholder='Какая книга?' />
+        <ListBooksComponent/>
       </View>
     );
   }
@@ -33,19 +34,14 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    // fontSize: 20,
+    // textAlign: 'center',
+    // margin: 10,
+  }
 });
