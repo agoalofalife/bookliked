@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import ListBooksComponent from './js/components/listBooks/index';
 import { SearchBar, Input } from 'react-native-elements'
 import Login from './js/components/login/index'
-
 type Props = {};
 
 export default class App extends Component<Props> {
@@ -22,7 +21,7 @@ export default class App extends Component<Props> {
               {/*cancelButtonTitle="Cancel"*/}
               {/*placeholder='Какая книга?' />*/}
         {/*<ListBooksComponent/>*/}
-        <Login/>
+      <Login/>
       </View>
     );
   }
