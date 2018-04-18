@@ -104,33 +104,17 @@ export default class Login extends Component {
                     placeholderTextColor="black"
                 />
                     <Button
-                        title="Войти"
-                        loading={false}
-                        loadingProps={{ size: "large", color: "rgba(111, 202, 186, 1)" }}
-                        titleStyle={{ fontWeight: "700" }}
-                        buttonStyle={{
-                            backgroundColor: "#298BD9",
-                            width: 300,
-                            height: 45,
-                            borderColor: "transparent",
-                            borderWidth: 0,
-                            borderRadius: 5
-                        }}
-                        containerStyle={{ marginTop: 20 }}
+                        title='Войти'
+                        activeOpacity={1}
+                        underlayColor="transparent"
+                        onPress={() => { console.log('Sign in !')}}
+                        loading={this.state.showLoading}
+                        loadingProps={{size: 'small', color: 'white'}}
+                        disabled={ !this.state.emailValid && this.state.password.length < 8}
+                        buttonStyle={{height: 50, width: 250, backgroundColor: '#298BD9', borderWidth: 2, borderColor: 'white', borderRadius: 30}}
+                        containerStyle={{marginVertical: 10}}
+                        titleStyle={{fontWeight: 'bold', color: 'white'}}
                     />
-                    {/*TODO show*/}
-                    {/*<Button*/}
-                        {/*title='Войти'*/}
-                        {/*activeOpacity={1}*/}
-                        {/*underlayColor="transparent"*/}
-                        {/*onPress={this.submitLoginCredentials.bind(this)}*/}
-                        {/*loading={this.state.showLoading}*/}
-                        {/*loadingProps={{size: 'small', color: 'white'}}*/}
-                        {/*disabled={ !this.state.emailValid && this.state.password.length < 8}*/}
-                        {/*buttonStyle={{height: 50, width: 250, backgroundColor: '#298BD9', borderWidth: 2, borderColor: 'white', borderRadius: 30}}*/}
-                        {/*containerStyle={{marginVertical: 10}}*/}
-                        {/*titleStyle={{fontWeight: 'bold', color: 'white'}}*/}
-                    {/*/>*/}
                 </View>}
                 {showRegistrationComponent && <RegistraionComponent/>}
             </View>

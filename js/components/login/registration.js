@@ -32,22 +32,25 @@ export default class Registration extends Component {
     render() {
         return (
             <View style={styles.loginInput}>
-                {/*<View style={{ flex:1, flexDirection: 'row'}}>*/}
-                    {/*<SocialIcon*/}
-                        {/*style={{backgroundColor:'#4C6EA5', iconColor:'white'}}*/}
-                        {/*type='facebook'*/}
-                    {/*/>*/}
-                    {/*<SocialIcon*/}
-                        {/*// light*/}
-                        {/*style={{ backgroundColor:'#EF564A', iconColor:'white'}}*/}
-                        {/*type='instagram'*/}
-                    {/*/>*/}
-                    {/*<SocialIcon*/}
-                        {/*// light*/}
-                        {/*style={{ backgroundColor:'#4C77A6',  iconColor:'white'}}*/}
-                        {/*type='vk'*/}
-                    {/*/>*/}
-                {/*</View>*/}
+                <View style={styles.social}>
+                    <SocialIcon
+                        iconColor='white'
+                        style={{backgroundColor:'#4C6EA5'}}
+                        type='facebook'
+                    />
+                    <SocialIcon
+                        // light
+                        iconColor='white'
+                        style={{ backgroundColor:'#EF564A'}}
+                        type='instagram'
+                    />
+                    <SocialIcon
+                        // light
+                        iconColor='white'
+                        style={{ backgroundColor:'#4C77A6'}}
+                        type='vk'
+                    />
+                </View>
 
                 <Input
                     shake={true}
@@ -146,7 +149,7 @@ export default class Registration extends Component {
 const styles = StyleSheet.create({
     loginInput: {
         marginTop:20,
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -159,5 +162,9 @@ const styles = StyleSheet.create({
     },
     inputDisableStyle:{
         opacity:0.5
+    },
+    social:{
+        flexDirection: 'row',
+        marginBottom:30
     }
 });
