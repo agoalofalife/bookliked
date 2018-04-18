@@ -4,6 +4,8 @@ import {View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input,Button,ButtonGroup} from 'react-native-elements';
 
+import RegistraionComponent from './registration';
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -13,26 +15,41 @@ export default class Login extends Component {
             email_valid: true,
             password: '',
             login_failed: false,
-            showLoading: false
+            showLoading: false,
+            showSignInComponent:true,
+            showRegistrationComponent:false,
+            text:'',
+            selectedIndex: 0,
         };
-        this.updateIndex = this.updateIndex.bind(this)
-        this.state = {text: '', selectedIndex: 0};
+        this.updateIndex = this.updateIndex.bind(this);
     }
+    validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
     updateIndex (selectedIndex) {
+        // switch mode component
+        if (selectedIndex === 0) {
+            this.state.showSignInComponent = true
+            this.state.showRegistrationComponent = false
+        } else {
+            this.state.showSignInComponent = false
+            this.state.showRegistrationComponent = true
+        }
         this.setState({selectedIndex})
     }
     render() {
-        const buttons = ['Войти', 'Регистрация'];
-        const { email, password, email_valid, showLoading, selectedIndex } = this.state;
+        const { email, password, email_valid, showLoading, selectedIndex, showSignInComponent,showRegistrationComponent } = this.state;
         return (
             <View style={styles.container}>
                 <ButtonGroup
                     onPress={this.updateIndex}
                     selectedIndex={selectedIndex}
-                    buttons={buttons}
+                    buttons={['Войти', 'Регистрация']}
                     containerStyle={styles.buttonGroup}
                 />
-                <View style={styles.loginInput}>
+                {showSignInComponent && <View style={styles.loginInput}>
                     <Input
                         shake={true}
                         leftIcon={
@@ -101,7 +118,8 @@ export default class Login extends Component {
                         }}
                         containerStyle={{ marginTop: 20 }}
                     />
-                </View>
+                </View>}
+                {showRegistrationComponent && <RegistraionComponent/>}
             </View>
         );
     }
