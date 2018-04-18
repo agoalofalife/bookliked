@@ -10,7 +10,6 @@ import { SearchBar, Input } from 'react-native-elements'
 import Login from './js/components/login/index'
 
 import Book from './js/components/book/index'
-
 type Props = {};
 
 export default class App extends Component<Props> {
@@ -26,18 +25,24 @@ export default class App extends Component<Props> {
       });
   }
   render() {
+      closeDrawer = () => {
+          this.drawer._root.close()
+      };
+      openDrawer = () => {
+          this.drawer._root.open()
+      };
     return (
       <View style={styles.container}>
-          {this.state.isAuth &&
-              <SearchBar
-              showLoading
-              onChangeText={() => { console.log('change text')}}
-              onClear={() => { console.log('clear text')}}
-              platform="android"
-              cancelButtonTitle="Cancel"
-              placeholder='Какая книга?'/>}
+          {/*{this.state.isAuth &&*/}
+              {/*<SearchBar*/}
+              {/*showLoading*/}
+              {/*onChangeText={() => { console.log('change text')}}*/}
+              {/*onClear={() => { console.log('clear text')}}*/}
+              {/*platform="android"*/}
+              {/*cancelButtonTitle="Cancel"*/}
+              {/*placeholder='Какая книга?'/>}*/}
 
-          {this.state.isAuth && <ListBooksComponent/>}
+          {/*{this.state.isAuth && <ListBooksComponent/>}*/}
           {!this.state.isAuth && <Login changeAuth={this.setAuth}/>}
       </View>
     );
