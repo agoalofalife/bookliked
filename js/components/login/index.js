@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Text, TextInput, View, StyleSheet } from 'react-native';
+import {View, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input } from 'react-native-elements';
+import { Input,Button,ButtonGroup} from 'react-native-elements';
 
 export default class Login extends Component {
     constructor(props) {
@@ -15,63 +15,26 @@ export default class Login extends Component {
             login_failed: false,
             showLoading: false
         };
-
-        this.state = {text: ''};
+        this.updateIndex = this.updateIndex.bind(this)
+        this.state = {text: '', selectedIndex: 0};
     }
-
+    updateIndex (selectedIndex) {
+        this.setState({selectedIndex})
+    }
     render() {
-        const { email, password, email_valid, showLoading } = this.state;
+        const buttons = ['Войти', 'Регистрация'];
+        const { email, password, email_valid, showLoading, selectedIndex } = this.state;
         return (
             <View style={styles.container}>
-                <Input
-                    placeholder='Как вас зовут?
-                    '
-                    shake={true}
-                    leftIcon={
-                        <Icon
-                            name='user'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                />
-                <Input
-                    placeholder='Почтовый адрес'
-                    // errorStyle={{ color: 'red' }}
-                    // errorMessage='Почтовый адрес неверен!'
-                    leftIcon={
-                        <Icon
-                            name='envelope'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                    shake={true}
-                />
-                <Input
-                    placeholder='Пароль'
-                    leftIcon={
-                        <Icon
-                            name='unlock-alt'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                    shake={true}
-                />
-                <Input
-                    placeholder='Подтвердить пароль'
-                    leftIcon={
-                        <Icon
-                            name='unlock-alt'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                    shake={true}
+                <ButtonGroup
+                    onPress={this.updateIndex}
+                    selectedIndex={selectedIndex}
+                    buttons={buttons}
+                    containerStyle={styles.buttonGroup}
                 />
                 <View style={styles.loginInput}>
                     <Input
+                        shake={true}
                         leftIcon={
                             <Icon
                                 name='user-o'
@@ -82,7 +45,7 @@ export default class Login extends Component {
                         containerStyle={{marginVertical: 10}}
                         onChangeText={email => this.setState({email})}
                         value={email}
-                        inputStyle={{marginLeft: 10, color: 'white'}}
+                        inputStyle={styles.input}
                         keyboardAppearance="light"
                         placeholder="Email"
                         autoFocus={false}
@@ -96,11 +59,11 @@ export default class Login extends Component {
                             this.passwordInput.focus();
                         }}
                         blurOnSubmit={false}
-                        placeholderTextColor="white"
+                        placeholderTextColor="black"
                         errorStyle={{textAlign: 'center', fontSize: 12}}
                         errorMessage={email_valid ? null : "Пожалуйста введите ваше имя"}
                     />
-                <Input
+                    <Input
                     leftIcon={
                         <Icon
                             name='lock'
@@ -111,18 +74,33 @@ export default class Login extends Component {
                     containerStyle={{marginVertical: 10}}
                     onChangeText={(password) => this.setState({password})}
                     value={password}
-                    inputStyle={{marginLeft: 10, color: 'white'}}
+                    inputStyle={styles.input}
                     secureTextEntry={true}
                     keyboardAppearance="light"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     autoCapitalize="none"
                     autoCorrect={false}
                     keyboardType="default"
                     returnKeyType="done"
                     ref={ input => this.passwordInput = input}
                     blurOnSubmit={true}
-                    placeholderTextColor="white"
+                    placeholderTextColor="black"
                 />
+                    <Button
+                        title="Войти"
+                        loading={false}
+                        loadingProps={{ size: "large", color: "rgba(111, 202, 186, 1)" }}
+                        titleStyle={{ fontWeight: "700" }}
+                        buttonStyle={{
+                            backgroundColor: "#298BD9",
+                            width: 300,
+                            height: 45,
+                            borderColor: "transparent",
+                            borderWidth: 0,
+                            borderRadius: 5
+                        }}
+                        containerStyle={{ marginTop: 20 }}
+                    />
                 </View>
             </View>
         );
@@ -131,12 +109,20 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginTop:40,
     },
     loginInput: {
         marginTop:20,
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+    input:{
+        borderColor: 'black',
+        marginLeft: 10,
+    },
+    buttonGroup:{
+        height:60,
     }
 });

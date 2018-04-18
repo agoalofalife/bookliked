@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         resizeMode: Image.resizeMode.contain,
     },
 });
-
+// todo try pass only name property es6
 export default (props) => (
     <View>
         <Image source={{ uri: props.book.url}} style={styles.photo} />
