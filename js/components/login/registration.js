@@ -3,6 +3,7 @@ import {View, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input,Button} from 'react-native-elements';
+import { SocialIcon } from 'react-native-elements'
 
 export default class Registration extends Component {
     constructor(props){
@@ -11,9 +12,19 @@ export default class Registration extends Component {
             emailValid:true,
             name:'',
             email:'',
-            password:''
+            password:'',
+            showLoading:false
         }
     }
+    submitLoginCredentials() {
+        const { showLoading } = this.state;
+
+        this.setState({
+            showLoading: !showLoading
+        });
+
+    }
+
     validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
@@ -21,6 +32,23 @@ export default class Registration extends Component {
     render() {
         return (
             <View style={styles.loginInput}>
+                {/*<View style={{ flex:1, flexDirection: 'row'}}>*/}
+                    {/*<SocialIcon*/}
+                        {/*style={{backgroundColor:'#4C6EA5', iconColor:'white'}}*/}
+                        {/*type='facebook'*/}
+                    {/*/>*/}
+                    {/*<SocialIcon*/}
+                        {/*// light*/}
+                        {/*style={{ backgroundColor:'#EF564A', iconColor:'white'}}*/}
+                        {/*type='instagram'*/}
+                    {/*/>*/}
+                    {/*<SocialIcon*/}
+                        {/*// light*/}
+                        {/*style={{ backgroundColor:'#4C77A6',  iconColor:'white'}}*/}
+                        {/*type='vk'*/}
+                    {/*/>*/}
+                {/*</View>*/}
+
                 <Input
                     shake={true}
                     leftIcon={
@@ -53,7 +81,7 @@ export default class Registration extends Component {
                         />
                     }
                     containerStyle={{marginVertical: 10}}
-                    onChangeText={email => this.setState(email)}
+                    onChangeText={email => this.setState({email})}
                     value={this.state.email}
                     inputStyle={styles.input}
                     keyboardAppearance="light"
@@ -63,10 +91,10 @@ export default class Registration extends Component {
                     autoCorrect={false}
                     keyboardType="email-address"
                     returnKeyType="next"
-                    // ref={ input => this.emailInput = input }
+                    ref={ input => this.emailInput = input }
                     onSubmitEditing={() => {
-                        this.setState({emailValid: this.validateEmail(email)});
-                        // this.passwordInput.focus();
+                        this.setState({emailValid: this.validateEmail(this.state.email)});
+                        this.passwordInput.focus();
                     }}
                     blurOnSubmit={false}
                     placeholderTextColor="black"
@@ -97,19 +125,17 @@ export default class Registration extends Component {
                     placeholderTextColor="black"
                 />
                 <Button
-                    title="Зарегистрироваться"
-                    loading={false}
-                    loadingProps={{ size: "large", color: "rgba(111, 202, 186, 1)" }}
-                    titleStyle={{ fontWeight: "700" }}
-                    buttonStyle={{
-                        backgroundColor: "#298BD9",
-                        width: 300,
-                        height: 45,
-                        borderColor: "transparent",
-                        borderWidth: 0,
-                        borderRadius: 5
-                    }}
-                    containerStyle={{ marginTop: 20 }}
+                    title='Зарегистрироваться'
+                    activeOpacity={0.5}
+                    underlayColor="transparent"
+                    onPress={this.submitLoginCredentials.bind(this)}
+                    loading={this.state.showLoading}
+                    loadingProps={{size: 'small', color: 'white'}}
+                    disabledStyle={styles.inputDisableStyle}
+                    disabled={ !this.state.emailValid || this.state.password.length < 8}
+                    buttonStyle={styles.button}
+                    containerStyle={{marginVertical: 10}}
+                    titleStyle={{fontWeight: 'bold', color: 'white'}}
                 />
             </View>
         )
@@ -128,4 +154,10 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginLeft: 10,
     },
+    button:{
+        height: 50, width: 250, backgroundColor: '#298BD9', borderWidth: 2, borderColor: 'white', borderRadius: 30
+    },
+    inputDisableStyle:{
+        opacity:0.5
+    }
 });
