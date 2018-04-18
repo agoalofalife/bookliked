@@ -11,21 +11,31 @@ import Login from './js/components/login/index'
 type Props = {};
 
 export default class App extends Component<Props> {
+  constructor(){
+    super();
+    this.state = {
+      isAuth:false
+    };
+  }
+  setAuth = (bool) => {
+      this.setState({
+          isAuth:bool
+      });
+  }
   render() {
     return (
       <View style={styles.container}>
-          {/*<SearchBar*/}
-              {/*showLoading*/}
-              {/*onChangeText={() => { console.log('change text')}}*/}
-              {/*onClear={() => { console.log('clear text')}}*/}
-              {/*platform="android"*/}
-              {/*cancelButtonTitle="Cancel"*/}
-              {/*placeholder='Какая книга?' />*/}
-        {/*<ListBooksComponent/>*/}
-      <Login/>
-          {/*<Text style={{color: 'red'}}>*/}
-              {/*and red*/}
-          {/*</Text>*/}
+          {this.state.isAuth &&
+              <SearchBar
+              showLoading
+              onChangeText={() => { console.log('change text')}}
+              onClear={() => { console.log('clear text')}}
+              platform="android"
+              cancelButtonTitle="Cancel"
+              placeholder='Какая книга?'/>}
+
+          {this.state.isAuth && <ListBooksComponent/>}
+          {!this.state.isAuth && <Login changeAuth={this.setAuth}/>}
       </View>
     );
   }

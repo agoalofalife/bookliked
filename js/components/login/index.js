@@ -107,10 +107,18 @@ export default class Login extends Component {
                         title='Войти'
                         activeOpacity={1}
                         underlayColor="transparent"
-                        onPress={() => { console.log('Sign in !')}}
+                        onPress={() => {
+                            this.setState({
+                                showLoading:true
+                            });
+                            setTimeout(() => {
+                                console.info('Sign in !', this.props.changeAuth(true));
+                            }, 2000)
+                        }}
                         loading={this.state.showLoading}
                         loadingProps={{size: 'small', color: 'white'}}
-                        disabled={ !this.state.emailValid && this.state.password.length < 8}
+                        disabledStyle={styles.inputDisableStyle}
+                        disabled={ this.state.email_valid && this.state.password.length < 8}
                         buttonStyle={{height: 50, width: 250, backgroundColor: '#298BD9', borderWidth: 2, borderColor: 'white', borderRadius: 30}}
                         containerStyle={{marginVertical: 10}}
                         titleStyle={{fontWeight: 'bold', color: 'white'}}
@@ -136,6 +144,9 @@ const styles = StyleSheet.create({
     input:{
         borderColor: 'black',
         marginLeft: 10,
+    },
+    inputDisableStyle:{
+        opacity:0.5
     },
     buttonGroup:{
         height:60,
