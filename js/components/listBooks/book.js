@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const styles = StyleSheet.create({
     text: {
@@ -15,12 +15,15 @@ const styles = StyleSheet.create({
         resizeMode: Image.resizeMode.contain,
     },
 });
+
 // todo try pass only name property es6
 export default (props) => (
-    <View>
+    <TouchableOpacity onPress={() => {
+        console.log('choose book')
+    }}>
         <Image source={{ uri: props.book.url}} style={styles.photo} />
         <Text style={styles.text}>
             {`${props.book.title}`}
         </Text>
-    </View>
+    </TouchableOpacity>
 )

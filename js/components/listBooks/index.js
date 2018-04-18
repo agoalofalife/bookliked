@@ -14,8 +14,6 @@ import _ from 'lodash';
 export default class ListBooks extends Component {
     constructor(props) {
         super(props);
-
-
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         // this.data = Data;
 
