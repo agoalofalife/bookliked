@@ -13,9 +13,9 @@ export default class Book extends Component{
     render(){
         return <View style={styles.container}>
             <TextElement style={styles.text} h3>
-                {`Черный город`}
+                {`${this.props.name}`}
             </TextElement>
-            <Image source={{ uri: 'http://fanread.ru/store/book/pictures/3/?src=6938910'}} style={styles.photo} />
+            <Image source={{ uri: this.props.url}} style={styles.photo} />
 
             <Rating
                 showRating

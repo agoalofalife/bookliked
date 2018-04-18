@@ -17,7 +17,7 @@ export default class App extends Component<Props> {
   constructor(){
     super();
     this.state = {
-      isAuth:false
+      isAuth:false,
     };
   }
   setAuth = (bool) => {
@@ -28,18 +28,17 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Book/>
-          {/*{this.state.isAuth &&*/}
-              {/*<SearchBar*/}
-              {/*showLoading*/}
-              {/*onChangeText={() => { console.log('change text')}}*/}
-              {/*onClear={() => { console.log('clear text')}}*/}
-              {/*platform="android"*/}
-              {/*cancelButtonTitle="Cancel"*/}
-              {/*placeholder='Какая книга?'/>}*/}
+          {this.state.isAuth &&
+              <SearchBar
+              showLoading
+              onChangeText={() => { console.log('change text')}}
+              onClear={() => { console.log('clear text')}}
+              platform="android"
+              cancelButtonTitle="Cancel"
+              placeholder='Какая книга?'/>}
 
-          {/*{this.state.isAuth && <ListBooksComponent/>}*/}
-          {/*{!this.state.isAuth && <Login changeAuth={this.setAuth}/>}*/}
+          {this.state.isAuth && <ListBooksComponent/>}
+          {!this.state.isAuth && <Login changeAuth={this.setAuth}/>}
       </View>
     );
   }

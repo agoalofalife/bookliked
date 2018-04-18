@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React,{Component} from 'react';
+import {Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const styles = StyleSheet.create({
     text: {
@@ -16,14 +16,23 @@ const styles = StyleSheet.create({
     },
 });
 
-// todo try pass only name property es6
-export default (props) => (
-    <TouchableOpacity onPress={() => {
-        console.log('choose book')
-    }}>
-        <Image source={{ uri: props.book.url}} style={styles.photo} />
-        <Text style={styles.text}>
-            {`${props.book.title}`}
-        </Text>
-    </TouchableOpacity>
-)
+export default class Book extends Component{
+    constructor(props){
+        super(props)
+
+    }
+
+    render(){
+        return (
+            <TouchableOpacity onPress={() => {
+               this.props.changeShowListBook(false)
+                console.log('choose book')
+            }}>
+                <Image source={{ uri: this.props.book.url}} style={styles.photo} />
+                <Text style={styles.text}>
+                    {`${this.props.book.title}`}
+                </Text>
+            </TouchableOpacity>
+        )
+    }
+}
