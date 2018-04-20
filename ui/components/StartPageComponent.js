@@ -1,12 +1,6 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
+import {Image, StyleSheet, View, Text} from "react-native";
 
-
-const {height, width} = Dimensions.get('window');
-const widthLogoBananas = 230;
-const heightLogoBananas = 230;
-const marginLeftBananas = (width - widthLogoBananas)/2;
-const marginTopBananas = (height - heightLogoBananas)/8;
 
 export default () => (
     <View style={styles.view}>
@@ -18,7 +12,7 @@ export default () => (
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        backgroundColor:"#fce82f"
+        // backgroundColor:"#fce82f"
     },
     text:{
         fontSize: 40,
@@ -28,10 +22,10 @@ const styles = StyleSheet.create({
         fontFamily: "Nexa_Script_Heavy"
     },
     image:{
-        marginLeft:marginLeftBananas,
-        marginTop:marginTopBananas,
-        width: widthLogoBananas,
-        height: heightLogoBananas,
+        alignSelf: "center",
+        marginTop:20,
+        width: 230,
+        height: 230,
         resizeMode: Image.resizeMode.contain
     }
 });
