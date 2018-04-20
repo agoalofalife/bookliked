@@ -30,11 +30,8 @@ export default class App extends Component{
       <View style={styles.container}>
           <Container style={{ backgroundColor:"#fce82f"}}>
            <Content>
-               <Right>
-                   <Switch value={false} />
-               </Right>
          <StartPageComponent/>
-               <Tabs initialPage={1}>
+               <Tabs initialPage={0} style={{ borderRadius:50, width:350,   alignSelf: "center",}}>
                    <Tab heading="Вход">
                        {/*<Tab1 />*/}
                    </Tab>
