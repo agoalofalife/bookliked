@@ -5,12 +5,10 @@ import {
     AsyncStorage,
 } from 'react-native';
 
+import { Container, Content} from 'native-base';
+
 import StartPageComponent from './ui/components/StartPageComponent'
-import SignInComponent from './ui/components/SignInComponent'
-
-import { Container, Content,Right, Switch, Tabs, Tab } from 'native-base';
-
-
+import AuthComponent from './ui/components/AuthComponent'
 
 export default class App extends Component{
   constructor(){
@@ -30,16 +28,8 @@ export default class App extends Component{
       <View style={styles.container}>
           <Container style={{ backgroundColor:"#fce82f"}}>
            <Content>
-         <StartPageComponent/>
-               <Tabs initialPage={0} style={{ borderRadius:50, width:350,   alignSelf: "center",}}>
-                   <Tab heading="Вход">
-                       {/*<Tab1 />*/}
-                   </Tab>
-                   <Tab heading="Регистрация">
-                       {/*<Tab2 />*/}
-                   </Tab>
-               </Tabs>
-         <SignInComponent/>
+           <StartPageComponent/>
+           <AuthComponent/>
           </Content>
           </Container>
       </View>

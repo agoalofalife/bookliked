@@ -10,7 +10,7 @@ const {width} = Dimensions.get('window');
 export default () => (
     <Form style={styles.form}>
         <Item stackedLabel>
-            <Label>Логин</Label>
+            <Label>Придумайте имя</Label>
             <Input />
         </Item>
         <Item stackedLabel last>
@@ -18,17 +18,18 @@ export default () => (
             <Input secureTextEntry={true}/>
         </Item>
         <Button block info>
-            <Text>Войти</Text>
+            <Text>Зарегистрироваться</Text>
         </Button>
     </Form>
 );
 
 const styles = StyleSheet.create({
-    form: {
-        backgroundColor:"white",
-        width:width -  40,
-        alignSelf: "center",
-        marginTop:20}
+        form: {
+            backgroundColor:"white",
+            width:width -  40,
+            alignSelf: "center",
+            marginTop:20
+        }
     },
 );
 
