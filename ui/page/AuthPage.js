@@ -12,7 +12,15 @@ import StartPageComponent from './StartPageComponent';
 export default () => (
     <Container style={{ backgroundColor:"#fce82f"}}>
         <Content>
-
+            <StartPageComponent/>
+            <Tabs initialPage={0} style={styles.tabs}>
+                <Tab heading="Вход">
+                    <SignInComponent/>
+                </Tab>
+                <Tab heading="Регистрация">
+                    <RegistrationComponent/>
+                </Tab>
+            </Tabs>
         </Content>
     </Container>
 )
