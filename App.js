@@ -5,14 +5,14 @@ import {
     AsyncStorage,
 } from 'react-native';
 
-import { Container, Content} from 'native-base';
-import StartPageComponent from './ui/components/StartPageComponent'
 import AuthComponent from './ui/components/AuthComponent'
+import FooterNavigator from './ui/components/FooterNavigator'
 import { addTokenAction, removeTokenAction } from './store/actions/auth';
 import { connect } from 'react-redux';
 
 class App extends Component{
     async componentDidMount(){
+        console.log( this.props );
        let token = await AsyncStorage.getItem('token');
        this.setState({token})
     }
@@ -20,12 +20,8 @@ class App extends Component{
   render() {
     return (
       <View style={styles.container}>
-          <Container style={{ backgroundColor:"#fce82f"}}>
-           <Content>
-           <StartPageComponent/>
-           <AuthComponent/>
-          </Content>
-          </Container>
+          {/*<AuthComponent/>*/}
+          <FooterNavigator/>
       </View>
     );
   }

@@ -12,7 +12,7 @@ export default () => (
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        // backgroundColor:"#fce82f"
+        backgroundColor:"#fce82f"
     },
     text:{
         fontSize: 40,
