@@ -48,18 +48,21 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.auth.token
-  }
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchAddToken: (token) => dispatch(addTokenAction(token)),
-    dispatchDeleteToken: () => dispatch(removeTokenAction())
-  }
-};
+const mapStateToProps = (state) => 
+ ({
+    token: state.auth.token
+ })
+
+const mapDispatchToProps = (dispatch) => 
+  ({
+    dispatchAddToken(token){
+      dispatch(addTokenAction(token))
+    },
+    dispatchDeleteToken(){
+      dispatch(removeTokenAction()
+    }
+  });
 
 export default connect(
   mapStateToProps,

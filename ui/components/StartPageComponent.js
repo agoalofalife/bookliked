@@ -3,29 +3,13 @@ import {Image, StyleSheet, View, Text} from "react-native";
 import {Spinner} from 'native-base';
 
 
-
-import { connect } from 'react-redux';
-
-const mapStateToProps = (state) => {
-  return {
-    token: state.auth.token
-  }
-};
-
-
-
-
-export default connect(
-  mapStateToProps,
-)(() => {
-        console.log( this)
-    return <View style={styles.view}>
+export default (props) => {
+    return (<View style={styles.view}>
         <Text style={styles.text}>Bananas</Text>
         <Image source={require('./../../assets/images/bananas-icon.png')}  style={styles.image} />
-        <Spinner color='green' />
-    </View>
-})
-
+        { props && props.isLoaded ? :  <Spinner color='green'/>}
+    </View>)
+};
 
 const styles = StyleSheet.create({
     view: {
