@@ -6,19 +6,13 @@ import {
 } from 'react-native';
 
 import { Container, Content} from 'native-base';
-
 import StartPageComponent from './ui/components/StartPageComponent'
 import AuthComponent from './ui/components/AuthComponent'
+import { addTokenAction, removeTokenAction } from './store/actions/auth';
+import { connect } from 'react-redux';
 
-export default class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-        token:null
-    }
-  }
-
-   async componentDidMount(){
+class App extends Component{
+    async componentDidMount(){
        let token = await AsyncStorage.getItem('token');
        this.setState({token})
     }
@@ -42,3 +36,22 @@ const styles = StyleSheet.create({
     flex: 1,
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchAddToken: (token) => dispatch(addTokenAction(token)),
+    dispatchDeleteToken: () => dispatch(removeTokenAction())
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App)
+
