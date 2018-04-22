@@ -16,6 +16,8 @@ import { Switch, Route, Redirect } from 'react-router'
 import {Link} from 'react-router-native'
 
 
+import AuthContainer from './containers/AuthContainer'
+
 class App extends Component{
     async componentDidMount(){
        let token = await AsyncStorage.getItem('token');
@@ -32,7 +34,7 @@ class App extends Component{
       <Card
         exact
         path="/"
-        component={AuthComponent}
+        component={AuthContainer}
       />
       <Card path="/hello" render={() => <Text>Hello</Text>} />
       <Card path="/auth" component={AuthComponent} />

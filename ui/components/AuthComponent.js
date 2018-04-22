@@ -11,18 +11,19 @@ import StartPageComponent from './StartPageComponent';
 import {Spinner} from 'native-base';
 
 
-export default ({ isLoad = false}) => (
+export default ({ isAuth = false}) => (
     <Container style={{ backgroundColor:"#fce82f"}}>
         <Content>
-            {isLoad ? <Spinner color='green'/> : <StartPageComponent/>}
-            <Tabs initialPage={0} style={styles.tabs}>
+        <StartPageComponent/>
+            {isAuth ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
                 <Tab heading="Вход">
                     <SignInComponent/>
                 </Tab>
                 <Tab heading="Регистрация">
                     <RegistrationComponent/>
                 </Tab>
-            </Tabs>
+            </Tabs>}
+            
         </Content>
     </Container>
 )

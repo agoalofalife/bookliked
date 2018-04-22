@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import AuthComponent from './../ui/components/AuthComponent'
 import { connect } from 'react-redux';
 
-class AuthContainer extends Component{
-    render(){
-        <AuthComponent/>
-    }
-}
 
+export const AuthContainer = (props, { store }) =>
+     <AuthComponent {...props}/>
 
 
 export default connect(
   (state) => {
     return {
-    token: state.auth.token
+    isAuth: state.auth.isAuth
     }
   }
 )(AuthContainer)
