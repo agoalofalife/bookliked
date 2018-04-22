@@ -5,13 +5,16 @@ import {
     AsyncStorage,
 } from 'react-native';
 import { addTokenAction } from './../store/actions/auth';
-import {  Route, Redirect } from 'react-router'
+import {  Route, Redirect,withRouter } from 'react-router'
 
-class AuthContainer extends  Component{
+class AuthContainer extends Component{
 	 componentDidMount(){
 	 	// this.props.history.push('/menu')
-	 	this.props.location.pathname = "/menu"
-       // this.props.dispatchFetchToken()
+	 	// console.log(this.props)
+	 
+	 	
+	 	// this.props.history.push('/menu')
+       this.props.dispatchFetchToken()
        // this.setState({token})
     }
 
@@ -35,7 +38,7 @@ const mapDispatchToProps = (dispatch) =>
     dispatchFetchToken : () => {
 	const asyncGetToken = () => {	
       return dispatch => {
-     
+      console.log('here?')
        // AsyncStorage.getItem('token').then((value)=>{
        // 	console.log(value)
        // })
@@ -45,8 +48,8 @@ const mapDispatchToProps = (dispatch) =>
        // 		dispatchAddToken(token)
        // } else{
        		setTimeout(() => {
-      		dispatch(addTokenAction('token'))
-      	}, 2000)
+       			dispatch(addTokenAction('token'))
+      	}, 1000)
        // }
       	
       }

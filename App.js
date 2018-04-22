@@ -30,7 +30,8 @@ class App extends Component{
         path="/"
         component={AuthContainer}
       />
-      <Card exact path="/menu" component={FooterNavigator} />
+
+      <Card path="/menu" component={FooterNavigator} />
      {/* <Card path="/menu" component={FooterNavigator} onEnter={(nextState, replace) => {
         replace({
         pathname: '/'
