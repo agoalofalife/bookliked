@@ -30,8 +30,13 @@ class App extends Component{
         path="/"
         component={AuthContainer}
       />
-      <Card path="/hello" render={() => <Text>Hello</Text>} />
-      <Card path="/auth" component={AuthComponent} />
+      <Card exact path="/menu" component={FooterNavigator} />
+     {/* <Card path="/menu" component={FooterNavigator} onEnter={(nextState, replace) => {
+        replace({
+        pathname: '/'
+        })
+      }
+  }/>*/}
     </Navigation>
       </View>
     );

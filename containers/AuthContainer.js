@@ -5,14 +5,13 @@ import {
     AsyncStorage,
 } from 'react-native';
 import { addTokenAction } from './../store/actions/auth';
-
-// const AuthContainer = (props) =>
-//      <AuthComponent {...props}/>
+import {  Route, Redirect } from 'react-router'
 
 class AuthContainer extends  Component{
-
 	 componentDidMount(){
-       this.props.dispatchFetchToken()
+	 	// this.props.history.push('/menu')
+	 	this.props.location.pathname = "/menu"
+       // this.props.dispatchFetchToken()
        // this.setState({token})
     }
 
