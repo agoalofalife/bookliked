@@ -32,7 +32,7 @@ class App extends Component{
       <Card
         exact
         path="/"
-        component={StartPageComponent}
+        component={AuthComponent}
       />
       <Card path="/hello" render={() => <Text>Hello</Text>} />
       <Card path="/auth" component={AuthComponent} />
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) =>
       dispatch(addTokenAction(token))
     },
     dispatchDeleteToken(){
-      dispatch(removeTokenAction()
+      dispatch(removeTokenAction())
     }
   });
 

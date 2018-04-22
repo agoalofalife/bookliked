@@ -8,11 +8,13 @@ import {Tabs,Tab,Container,Content } from 'native-base';
 import SignInComponent from './SignInComponent';
 import RegistrationComponent from './RegistrationComponent';
 import StartPageComponent from './StartPageComponent';
+import {Spinner} from 'native-base';
 
-export default () => (
+
+export default ({ isLoad = false}) => (
     <Container style={{ backgroundColor:"#fce82f"}}>
         <Content>
-            <StartPageComponent/>
+            {isLoad ? <Spinner color='green'/> : <StartPageComponent/>}
             <Tabs initialPage={0} style={styles.tabs}>
                 <Tab heading="Вход">
                     <SignInComponent/>

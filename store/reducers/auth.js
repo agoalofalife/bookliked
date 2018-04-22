@@ -1,11 +1,19 @@
 import {ADD_TOKEN, REMOVE_TOKEN} from './../actions/constants'
 
-export const auth = (state = {token:null}, action) => {
+const storeAuth = {
+ token:null,
+};
+
+export default (state = storeAuth, action) => {
     switch (action.type) {
         case ADD_TOKEN:
-            return { token: action.token};
+        	return {...state,
+    		token: action.token
+        	}
         case REMOVE_TOKEN:
-            return {token:null};
+            return {...state,
+    		token: null
+        	}
         default:
             return state;
     }
