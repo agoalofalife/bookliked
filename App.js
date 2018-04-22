@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    AsyncStorage,
     Text,
 } from 'react-native';
 
@@ -19,11 +18,6 @@ import {Link} from 'react-router-native'
 import AuthContainer from './containers/AuthContainer'
 
 class App extends Component{
-    async componentDidMount(){
-       let token = await AsyncStorage.getItem('token');
-       this.setState({token})
-    }
-
   render() {
     return (
       <View style={styles.container}>

@@ -15,7 +15,7 @@ export default ({ isAuth = false}) => (
     <Container style={{ backgroundColor:"#fce82f"}}>
         <Content>
         <StartPageComponent/>
-            {isAuth ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
+            {!isAuth ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
                 <Tab heading="Вход">
                     <SignInComponent/>
                 </Tab>
