@@ -5,15 +5,12 @@ import {
     Text,
 } from 'react-native';
 
-import AuthComponent from './ui/components/AuthComponent'
 import FooterNavigator from './ui/components/FooterNavigator'
-import StartPageComponent from './ui/components/StartPageComponent'
 import { addTokenAction, removeTokenAction } from './store/actions/auth';
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
 import { Switch, Route, Redirect } from 'react-router'
 import {Link} from 'react-router-native'
-
 
 import AuthContainer from './containers/AuthContainer'
 
@@ -21,14 +18,13 @@ class App extends Component{
   render() {
     return (
       <View style={styles.container}>
-          {/*<AuthComponent/>*/}
-          {/*<FooterNavigator/>*/}
-       
     <Navigation hideNavBar>
       <Card
         exact
         path="/"
-        component={AuthContainer}
+        component={AuthContainer} onEnter={(nextState, replace) => {
+         console.log(nextState, replace, '...')
+        }}
       />
 
       <Card path="/menu" component={FooterNavigator} />

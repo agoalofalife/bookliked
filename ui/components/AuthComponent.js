@@ -11,22 +11,21 @@ import StartPageComponent from './StartPageComponent';
 import {Spinner} from 'native-base';
 
 
-export default ({ load = false}) => (
-    <Container style={{ backgroundColor:"#fce82f"}}>
+export default ({...props}) => {
+    return (<Container style={{backgroundColor: "#fce82f"}}>
         <Content>
-        <StartPageComponent/>
-            {load ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
+            <StartPageComponent/>
+            {props.load ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
                 <Tab heading="Вход">
-                    <SignInComponent/>
+                    <SignInComponent {...props}/>
                 </Tab>
                 <Tab heading="Регистрация">
                     <RegistrationComponent/>
                 </Tab>
             </Tabs>}
-            
         </Content>
-    </Container>
-)
+    </Container>)
+}
 const styles = StyleSheet.create({
         tabs: {
             borderRadius:50,

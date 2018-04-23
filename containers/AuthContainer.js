@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
     AsyncStorage,
 } from 'react-native';
-import { addTokenAction, loadAuthAction, isNotLoadAuthAction } from './../store/actions/auth';
+import { addTokenAction, loadAuthAction, isNotLoadAuthAction, signInAction } from './../store/actions/auth';
 
 class AuthContainer extends Component{
 	 componentDidMount(){
@@ -34,32 +34,34 @@ const mapStateToProps = (state) =>
  ({
       isAuth: state.auth.isAuth,
       token: state.auth.token,
- })
+ });
 
 const mapDispatchToProps = (dispatch) => 
   ({
     dispatchAddToken(token){
       dispatch(addTokenAction(token))
     },
-    dispatchFetchToken : () => {
-	const asyncGetToken = () => {	
-      return async dispatch => {
-      let token = await AsyncStorage.getItem('token');
-      console.log(token)
-      if  (token === null) {
-          setTimeout(() => {
-                   dispatch(addTokenAction('token'))
-           }, 1000)
-      } else {
-          dispatch(addTokenAction('token'))
-      }
-
-      }
-    };
-    return new Promise((resolve, reject) => {
-        dispatch(asyncGetToken());
-        resolve(true)
-    })
+    dispatchSignIn : (login, password) => {
+    loadAuthAction();
+    dispatch(signInAction(login, password))
+	// const asyncGetToken = () => {
+      // return async dispatch => {
+      // let token = await AsyncStorage.getItem('token');
+      // console.log(token)
+      // if  (token === null) {
+      //     setTimeout(() => {
+      //              dispatch(addTokenAction('token'))
+      //      }, 1000)
+      // } else {
+      //     dispatch(addTokenAction('token'))
+      // }
+      //
+      // }
+    // };
+    // return new Promise((resolve, reject) => {
+    //     dispatch(asyncGetToken());
+    //     resolve(true)
+    // })
 
     }
   });
