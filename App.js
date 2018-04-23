@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import FooterNavigator from './ui/components/FooterNavigator'
+import HomeComponent from './ui/components/HomeComponent'
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
 import PrivateRoute from './hoc/PrivateRoute'
@@ -21,8 +22,11 @@ class App extends Component{
         exact
         path="/"
         component={AuthContainer}/>
-        <PrivateRoute path="/menu" component={FooterNavigator} {...this.props}/>
-      {/*<Card path="/menu" component={FooterNavigator} />*/}
+        {PrivateRoute(HomeComponent, this.props.isAuth, '/menu')}
+        {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
+        {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
+        {/*{ PrivateRoute({component:FooterNavigator, isAuth:this.props.isAuth})}*/}
+        {/*<PrivateRoute path="/menu" component={FooterNavigator} {...this.props}/>*/}
     </Navigation>
       </View>
     );
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => 
  ({
-    isAuth: state.auth.isAuth
+     isAuth: state.auth.isAuth,
  });
 
 export default connect(

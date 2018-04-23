@@ -12,7 +12,8 @@ import {Spinner} from 'native-base';
 
 
 export default ({...props}) => {
-    return (<Container style={{backgroundColor: "#fce82f"}}>
+    return (
+        <Container style={{backgroundColor: "#fce82f"}}>
         <Content>
             <StartPageComponent/>
             {props.load ? <Spinner color='green'/> : <Tabs initialPage={0} style={styles.tabs}>
@@ -24,7 +25,8 @@ export default ({...props}) => {
                 </Tab>
             </Tabs>}
         </Content>
-    </Container>)
+    </Container>
+    )
 }
 const styles = StyleSheet.create({
         tabs: {

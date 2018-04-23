@@ -10,6 +10,7 @@ export default (state = storeAuth, action) => {
     switch (action.type) {
         case ADD_TOKEN:
         	return {
+            load:false,
             isAuth:true,
     		token: action.token,
         	};
