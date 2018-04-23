@@ -4,16 +4,23 @@ import { connect } from 'react-redux';
 import {
     AsyncStorage,
 } from 'react-native';
-import { addTokenAction } from './../store/actions/auth';
-import {  Route, Redirect,withRouter } from 'react-router'
+import { addTokenAction, loadAuthAction, isNotLoadAuthAction } from './../store/actions/auth';
 
 class AuthContainer extends Component{
 	 componentDidMount(){
-	 	// this.props.history.push('/menu')
-       this.props.dispatchFetchToken().then(value => {
-           this.props.history.push('/menu')
-       })
-       // this.setState({token})
+         loadAuthAction();
+	     if (this.props.token === null){
+             AsyncStorage.getItem('token').then( token => {
+                 console.info(token, 'token')
+                 if (token === null){
+                     isNotLoadAuthAction()
+                 } else {
+                     this.props.history.push('/menu')
+                 }
+             })
+         } else {
+             this.props.history.push('/menu')
+         }
     }
 
 	render(){
@@ -25,7 +32,8 @@ class AuthContainer extends Component{
 
 const mapStateToProps = (state) => 
  ({
-      isAuth: state.auth.isAuth
+      isAuth: state.auth.isAuth,
+      token: state.auth.token,
  })
 
 const mapDispatchToProps = (dispatch) => 
@@ -35,20 +43,17 @@ const mapDispatchToProps = (dispatch) =>
     },
     dispatchFetchToken : () => {
 	const asyncGetToken = () => {	
-      return dispatch => {
-       setTimeout(() => {
-           dispatch(addTokenAction('token'))
-       }, 1000)
-       // AsyncStorage.getItem('token').then(token => {
-       //     console.log(token, 'token')
-       // 	if (token === null) {
-       //      setTimeout(() => {
-       //          dispatch(addTokenAction('token'))
-       //      }, 1000)
-       //  } else {
-       //      dispatchAddToken(token)
-       //  }
-       // })
+      return async dispatch => {
+      let token = await AsyncStorage.getItem('token');
+      console.log(token)
+      if  (token === null) {
+          setTimeout(() => {
+                   dispatch(addTokenAction('token'))
+           }, 1000)
+      } else {
+          dispatch(addTokenAction('token'))
+      }
+
       }
     };
     return new Promise((resolve, reject) => {
@@ -62,5 +67,5 @@ const mapDispatchToProps = (dispatch) =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(AuthContainer))
+)(AuthContainer)
 
