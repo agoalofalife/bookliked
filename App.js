@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => 
  ({
     token: state.auth.token
- })
+ });
 
 const mapDispatchToProps = (dispatch) => 
   ({

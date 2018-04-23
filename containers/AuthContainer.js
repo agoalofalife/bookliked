@@ -10,10 +10,6 @@ import {  Route, Redirect,withRouter } from 'react-router'
 class AuthContainer extends Component{
 	 componentDidMount(){
 	 	// this.props.history.push('/menu')
-	 	// console.log(this.props)
-	 
-	 	
-	 	// this.props.history.push('/menu')
        this.props.dispatchFetchToken()
        // this.setState({token})
     }
@@ -38,22 +34,18 @@ const mapDispatchToProps = (dispatch) =>
     dispatchFetchToken : () => {
 	const asyncGetToken = () => {	
       return dispatch => {
-      console.log('here?')
-       // AsyncStorage.getItem('token').then((value)=>{
-       // 	console.log(value)
-       // })
-  		
-      	
-       // if (token) {
-       // 		dispatchAddToken(token)
-       // } else{
-       		setTimeout(() => {
-       			dispatch(addTokenAction('token'))
-      	}, 1000)
-       // }
-      	
+       AsyncStorage.getItem('token').then((token)=>{
+           console.log(token, 'token')
+       	if (token === null) {
+            setTimeout(() => {
+                dispatch(addTokenAction('token'))
+            }, 1000)
+        } else {
+            dispatchAddToken(token)
+        }
+       })
       }
-  		}
+    };
       dispatch(asyncGetToken());
     }
   });
@@ -61,5 +53,5 @@ const mapDispatchToProps = (dispatch) =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthContainer)
+)(withRouter(AuthContainer))
 
