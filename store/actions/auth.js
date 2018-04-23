@@ -6,7 +6,6 @@ export const addTokenAction  = (token) => (
         type: ADD_TOKEN,
         token:token,
         load:false,
-        isAuth:true
     }
 );
 
@@ -33,8 +32,12 @@ export const isNotLoadAuthAction  = () => (
 
 export const signInAction = (login, password) => {
     return dispatch => {
-        setTimeout(() => {
-            dispatch(addTokenAction('token'));
-        }, 2000)
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                dispatch(addTokenAction('token'));
+                resolve()
+            }, 2000)
+        })
+
     }
 };

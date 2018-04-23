@@ -11,7 +11,7 @@ class AuthContainer extends Component{
          this.props.dispatchLoadAuth();
          if (this.props.token === null){
              AsyncStorage.getItem('token').then( token => {
-                 console.info(token, 'token')
+                 console.info(`token is ${token}`);
                  if (token === null){
                      this.props.dispatchIsNotLoadAuth()
                  } else {
@@ -47,10 +47,7 @@ const mapDispatchToProps = (dispatch) =>
     },
     dispatchSignIn : (login, password) => {
     dispatch(loadAuthAction());
-    dispatch(signInAction(login, password))
-    return new Promise((resolve, reject) => {
-        resolve(true)
-    })
+    return dispatch(signInAction(login, password))
     },
     dispatchLoadAuth(){
         dispatch(loadAuthAction());

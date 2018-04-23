@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text,
 } from 'react-native';
 
 import FooterNavigator from './ui/components/FooterNavigator'
-import { addTokenAction, removeTokenAction } from './store/actions/auth';
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
+import PrivateRoute from './hoc/PrivateRoute'
 import { Switch, Route, Redirect } from 'react-router'
 
 import AuthContainer from './containers/AuthContainer'
 
 class App extends Component{
   render() {
-
     return (
       <View style={styles.container}>
     <Navigation hideNavBar>
@@ -23,13 +21,8 @@ class App extends Component{
         exact
         path="/"
         component={AuthContainer}/>
-      <Card path="/menu" component={FooterNavigator} />
-     {/* <Card path="/menu" component={FooterNavigator} onEnter={(nextState, replace) => {
-        replace({
-        pathname: '/'
-        })
-      }
-  }/>*/}
+        <PrivateRoute path="/menu" component={FooterNavigator} {...this.props}/>
+      {/*<Card path="/menu" component={FooterNavigator} />*/}
     </Navigation>
       </View>
     );

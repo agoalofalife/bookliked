@@ -11,7 +11,7 @@ export default (state = storeAuth, action) => {
         case ADD_TOKEN:
         	return {
             isAuth:true,
-    		token: action.isAuth
+    		token: action.token,
         	};
         case REMOVE_TOKEN:
             return {...state,
