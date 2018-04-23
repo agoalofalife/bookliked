@@ -7,7 +7,7 @@ import {Button, Form, Item, Input, Label,Text } from 'native-base';
 
 const {width} = Dimensions.get('window');
 
-export default ({dispatchSignIn}) => {
+export default ({dispatchSignIn, navigateMenu}) => {
     let _login, _password;
 
     return (
@@ -21,7 +21,9 @@ export default ({dispatchSignIn}) => {
                 <Input onChangeText={input => _password = input} secureTextEntry={true}/>
             </Item>
             <Button block info onPress={() => {
-                dispatchSignIn(_login, _password)
+                dispatchSignIn(_login, _password).then(_ => {
+                    navigateMenu()
+                })
             }}>
                 <Text>Войти</Text>
             </Button>

@@ -10,23 +10,19 @@ import { addTokenAction, removeTokenAction } from './store/actions/auth';
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
 import { Switch, Route, Redirect } from 'react-router'
-import {Link} from 'react-router-native'
 
 import AuthContainer from './containers/AuthContainer'
 
 class App extends Component{
   render() {
+
     return (
       <View style={styles.container}>
     <Navigation hideNavBar>
       <Card
         exact
         path="/"
-        component={AuthContainer} onEnter={(nextState, replace) => {
-         console.log(nextState, replace, '...')
-        }}
-      />
-
+        component={AuthContainer}/>
       <Card path="/menu" component={FooterNavigator} />
      {/* <Card path="/menu" component={FooterNavigator} onEnter={(nextState, replace) => {
         replace({
@@ -39,7 +35,8 @@ class App extends Component{
     );
   }
 }
-
+// TODO @link https://stackoverflow.com/questions/47627818/performing-authentication-on-routes-with-react-router-v4/47628941#47628941
+// private route hoc
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -49,21 +46,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => 
  ({
-    token: state.auth.token
+    isAuth: state.auth.isAuth
  });
-
-const mapDispatchToProps = (dispatch) => 
-  ({
-    dispatchAddToken(token){
-      dispatch(addTokenAction(token))
-    },
-    dispatchDeleteToken(){
-      dispatch(removeTokenAction())
-    }
-  });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(App)
 

@@ -23,9 +23,12 @@ class AuthContainer extends Component{
          }
     }
 
+    navigateMenu(){
+        this.props.history.push('/menu')
+    }
 	render(){
 		return (
-	<AuthComponent {...this.props}/>
+	<AuthComponent {...this.props} navigateMenu={this.navigateMenu.bind(this)}/>
 	)
 	}
 }
@@ -45,10 +48,9 @@ const mapDispatchToProps = (dispatch) =>
     dispatchSignIn : (login, password) => {
     dispatch(loadAuthAction());
     dispatch(signInAction(login, password))
-    // return new Promise((resolve, reject) => {
-    //     dispatch(asyncGetToken());
-    //     resolve(true)
-    // })
+    return new Promise((resolve, reject) => {
+        resolve(true)
+    })
     },
     dispatchLoadAuth(){
         dispatch(loadAuthAction());
