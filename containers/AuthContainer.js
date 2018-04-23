@@ -8,12 +8,12 @@ import { addTokenAction, loadAuthAction, isNotLoadAuthAction, signInAction } fro
 
 class AuthContainer extends Component{
 	 componentDidMount(){
-         loadAuthAction();
-	     if (this.props.token === null){
+         this.props.dispatchLoadAuth();
+         if (this.props.token === null){
              AsyncStorage.getItem('token').then( token => {
                  console.info(token, 'token')
                  if (token === null){
-                     isNotLoadAuthAction()
+                     this.props.dispatchIsNotLoadAuth()
                  } else {
                      this.props.history.push('/menu')
                  }
@@ -33,6 +33,7 @@ class AuthContainer extends Component{
 const mapStateToProps = (state) => 
  ({
       isAuth: state.auth.isAuth,
+      load:state.auth.load,
       token: state.auth.token,
  });
 
@@ -42,27 +43,18 @@ const mapDispatchToProps = (dispatch) =>
       dispatch(addTokenAction(token))
     },
     dispatchSignIn : (login, password) => {
-    loadAuthAction();
+    dispatch(loadAuthAction());
     dispatch(signInAction(login, password))
-	// const asyncGetToken = () => {
-      // return async dispatch => {
-      // let token = await AsyncStorage.getItem('token');
-      // console.log(token)
-      // if  (token === null) {
-      //     setTimeout(() => {
-      //              dispatch(addTokenAction('token'))
-      //      }, 1000)
-      // } else {
-      //     dispatch(addTokenAction('token'))
-      // }
-      //
-      // }
-    // };
     // return new Promise((resolve, reject) => {
     //     dispatch(asyncGetToken());
     //     resolve(true)
     // })
-
+    },
+    dispatchLoadAuth(){
+        dispatch(loadAuthAction());
+    },
+    dispatchIsNotLoadAuth(){
+        dispatch(isNotLoadAuthAction());
     }
   });
 
