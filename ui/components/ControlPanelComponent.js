@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     StyleSheet,
 } from 'react-native'
 import {Avatar, ListItem} from 'react-native-elements'
-
 import {Content} from 'native-base';
+
+const stubUserUri = './../../assets/images/stub_user.png';
 
 const list = [
             {
@@ -23,7 +24,7 @@ export default () => (
             containerStyle={styles.avatar}
             xlarge
             rounded
-            source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+            source={require(stubUserUri)}
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}/>
         {

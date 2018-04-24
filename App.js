@@ -4,7 +4,6 @@ import {
     View,
 } from 'react-native';
 
-import FooterNavigator from './ui/components/FooterNavigator'
 import HomeComponent from './ui/components/HomeComponent'
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
