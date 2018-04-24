@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer, Header, Left,Button,Icon,Title, Body } from 'native-base';
 import ControlPanelComponent from './../ui/components/ControlPanelComponent';
+import ImagePickerContainer from "./PickImageContainer";
 
 export default class DrawerContainer extends Component {
     closeDrawer() {
@@ -13,7 +14,7 @@ export default class DrawerContainer extends Component {
         return (
             <Drawer
                 ref={(ref) => { this.drawer = ref; }}
-                content={<ControlPanelComponent/>}
+                content={<ImagePickerContainer/>}
                 onClose={() => this.closeDrawer()} >
                 <Header style={{backgroundColor: "#fce82f"}}>
                     <Left>

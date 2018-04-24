@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
+import ControlPanelComponent from './../ui/components/ControlPanelComponent';
 
-export default class ImagePickerComponent extends React.Component {
+export default class ImagePickerContainer extends React.Component {
     state = {
         ImageSource: null,
     };
@@ -38,7 +39,7 @@ export default class ImagePickerComponent extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
+                let source = {uri: response.uri};
 
                 // You can also display the image using data:
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
@@ -52,22 +53,12 @@ export default class ImagePickerComponent extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
-                    <View style={styles.ImageContainer}>
-                        { this.state.ImageSource === null ? <Text>Select a Photo</Text> :
-                            <Image style={styles.ImageContainer} source={this.state.ImageSource} />
-                        }
-                    </View>
-                </TouchableOpacity>
-            </View>
-        );
+            <ControlPanelComponent selectPhoto={this.selectPhotoTapped.bind(this)}/>
+        )
     }
-
 }
 
 const styles = StyleSheet.create({
-
     container: {
         flex: 1,
         justifyContent: 'center',

@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-    StyleSheet,
+    StyleSheet
 } from 'react-native'
 import {Avatar, ListItem} from 'react-native-elements'
 import {Content,Spinner} from 'native-base';
 
 const stubUserUri = './../../assets/images/stub_user.png';
-const spinnerUri = './../../assets/images/spinner.gif';
 
 const list = [
             {
@@ -21,13 +20,13 @@ const list = [
 
 export default ({loadAvatar=false}) => (
     <Content style={styles.content}>
-        {loadAvatar ? <Spinner color='red' /> : <Avatar
+        {loadAvatar ? <Spinner color='red' style={styles.spinner}/> : <Avatar
             containerStyle={styles.containerAvatar}
             xlarge
             roundedh
             overlayContainerStyle={{backgroundColor:'white'}}
             avatarStyle={styles.avatar}
-            source={require(spinnerUri)}
+            source={require(stubUserUri)}
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}/>}
         {
@@ -45,12 +44,15 @@ export default ({loadAvatar=false}) => (
 const styles = StyleSheet.create({
     content:{
         backgroundColor:'#FFFFFF',
-
     },
     containerAvatar: {
         alignSelf: "center",
         marginTop:25,
         marginBottom:20
+    },
+    spinner:{
+        marginBottom:50,
+        marginTop:40
     },
     avatar:{
         borderRadius: 73,
