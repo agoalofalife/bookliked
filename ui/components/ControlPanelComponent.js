@@ -3,9 +3,10 @@ import {
     StyleSheet,
 } from 'react-native'
 import {Avatar, ListItem} from 'react-native-elements'
-import {Content} from 'native-base';
+import {Content,Spinner} from 'native-base';
 
 const stubUserUri = './../../assets/images/stub_user.png';
+const spinnerUri = './../../assets/images/spinner.gif';
 
 const list = [
             {
@@ -18,15 +19,17 @@ const list = [
             },
         ];
 
-export default () => (
+export default ({loadAvatar=false}) => (
     <Content style={styles.content}>
-        <Avatar
-            containerStyle={styles.avatar}
+        {loadAvatar ? <Spinner color='red' /> : <Avatar
+            containerStyle={styles.containerAvatar}
             xlarge
-            rounded
-            source={require(stubUserUri)}
+            roundedh
+            overlayContainerStyle={{backgroundColor:'white'}}
+            avatarStyle={styles.avatar}
+            source={require(spinnerUri)}
             onPress={() => console.log("Works!")}
-            activeOpacity={0.7}/>
+            activeOpacity={0.7}/>}
         {
             list.map((item, i) => (
                 <ListItem
@@ -41,11 +44,18 @@ export default () => (
 
 const styles = StyleSheet.create({
     content:{
-        backgroundColor:'#FFFFFF'
+        backgroundColor:'#FFFFFF',
+
     },
-    avatar: {
+    containerAvatar: {
         alignSelf: "center",
         marginTop:25,
         marginBottom:20
     },
+    avatar:{
+        borderRadius: 73,
+        borderWidth: 5,
+        borderStyle: 'dotted',
+        borderColor: 'red'
+    }
 });
