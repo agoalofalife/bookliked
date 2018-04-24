@@ -22,7 +22,7 @@ export default class DrawerContainer extends Component {
                         </Button>
                     </Left>
                     <Body>
-                    <Title style={{color:'black'}}>Bananas</Title>
+                    <Title style={{color:'black', fontFamily: "Nexa_Script_Heavy"}}>Bananas</Title>
                     </Body>
                 </Header>
             </Drawer>
