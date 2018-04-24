@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
 import PrivateRoute from './hoc/PrivateRoute'
 import { Switch, Route, Redirect } from 'react-router'
-
 import AuthContainer from './containers/AuthContainer'
 
 class App extends Component{
@@ -18,10 +17,14 @@ class App extends Component{
     return (
       <View style={styles.container}>
     <Navigation hideNavBar>
-      <Card
-        exact
-        path="/"
-        component={AuthContainer}/>
+      {/*<Card*/}
+        {/*exact*/}
+        {/*path="/"*/}
+        {/*component={AuthContainer}/>*/}
+        <Card
+            exact
+            path="/"
+            component={HomeComponent}/>
         {PrivateRoute(HomeComponent, this.props.isAuth, '/menu')}
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}

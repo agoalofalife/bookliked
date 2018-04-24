@@ -1,12 +1,17 @@
 import React from 'react';
-import {Button, Footer, FooterTab,Text } from 'native-base';
 import { BottomNavigation, Tab } from 'react-router-navigation'
+import {StyleSheet} from "react-native";
 
 export default () => {
     return (
-        <BottomNavigation lazy={false} tabActiveTintColor="blue">
-        <Tab label="Регистрация чеков" path="/" />
-        <Tab label="Призы" path="/main" />
-        </BottomNavigation>
+    <BottomNavigation lazy={false} tabActiveTintColor="black" tabBarStyle={{backgroundColor: "#fce82f"}}>
+    <Tab label="Регистрация чеков" path="/"  />
+    <Tab label="Призы" path="/main" />
+    </BottomNavigation>
     )
 }
+const styles = StyleSheet.create({
+    bottom: {
+       backgroundColor:"#fce82f"
+    }
+});
