@@ -1,7 +1,6 @@
 import React from 'react';
 import { BottomNavigation, Tab } from 'react-router-navigation'
 import {StyleSheet} from "react-native";
-import RegistrationComponent from './../../ui/components/RegistrationComponent'
 
 export default () => {
     return (

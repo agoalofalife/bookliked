@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import HomeComponent from './ui/components/HomeComponent'
-import RegistrationComponent from './ui/components/RegistrationComponent'
+import RegistrationComponent from './ui/components/RegistrationQrCodeComponent'
 
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
@@ -26,9 +26,6 @@ class App extends Component{
             exact
             path="/"
             component={HomeComponent}/>
-        <Card
-            path="/registration-check"
-            component={RegistrationComponent}/>
         {PrivateRoute(HomeComponent, this.props.isAuth, '/menu')}
 
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}

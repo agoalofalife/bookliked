@@ -6,7 +6,7 @@ import {
 
 import {Tabs,Tab,Container,Content} from 'native-base';
 import SignInComponent from './SignInComponent';
-import RegistrationComponent from './RegistrationComponent';
+import RegistrationComponent from './RegistrationQrCodeComponent';
 import StartPageComponent from './StartPageComponent';
 import {Spinner} from 'native-base';
 
