@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer, Header, Left,Button,Icon,Title, Body } from 'native-base';
 import ControlPanelComponent from './../ui/components/ControlPanelComponent';
-import ImagePickerContainer from "./PickImageContainer";
+import ImagePickerContainer from "./AvatarContainer";
 
 export default class DrawerContainer extends Component {
     closeDrawer() {

@@ -5,8 +5,6 @@ import {
 import {Avatar, ListItem} from 'react-native-elements'
 import {Content,Spinner} from 'native-base';
 
-const stubUserUri = './../../assets/images/stub_user.png';
-
 const list = [
             {
                 title: 'История покупок',
@@ -18,28 +16,30 @@ const list = [
             },
         ];
 
-export default ({loadAvatar=false}) => (
-    <Content style={styles.content}>
-        {loadAvatar ? <Spinner color='red' style={styles.spinner}/> : <Avatar
-            containerStyle={styles.containerAvatar}
-            xlarge
-            roundedh
-            overlayContainerStyle={{backgroundColor:'white'}}
-            avatarStyle={styles.avatar}
-            source={require(stubUserUri)}
-            onPress={() => console.log("Works!")}
-            activeOpacity={0.7}/>}
-        {
-            list.map((item, i) => (
-                <ListItem
-                    key={i}
-                    title={item.title}
-                    leftIcon={{ name: item.icon }}
-                />
-            ))
-        }
-    </Content>
-)
+export default ({loadAvatar=false, imageSource, ...props}) => {
+    return (
+        <Content style={styles.content}>
+            {loadAvatar ? <Spinner color='red' style={styles.spinner}/> : <Avatar
+                containerStyle={styles.containerAvatar}
+                xlarge
+                roundedh
+                overlayContainerStyle={{backgroundColor: 'white'}}
+                avatarStyle={styles.avatar}
+                source={imageSource}
+                onPress={props.selectPhoto}
+                activeOpacity={0.7}/>}
+            {
+                list.map((item, i) => (
+                    <ListItem
+                        key={i}
+                        title={item.title}
+                        leftIcon={{name: item.icon}}
+                    />
+                ))
+            }
+        </Content>
+    )
+}
 
 const styles = StyleSheet.create({
     content:{
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     avatar:{
         borderRadius: 73,
         borderWidth: 5,
-        borderStyle: 'dotted',
         borderColor: 'red'
     }
 });

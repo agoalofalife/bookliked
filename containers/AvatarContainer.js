@@ -1,19 +1,12 @@
 import React from 'React';
-import {
-    StyleSheet,
-    Text,
-    View,
-    PixelRatio,
-    TouchableOpacity,
-    Image,
-} from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
 import ControlPanelComponent from './../ui/components/ControlPanelComponent';
 
-export default class ImagePickerContainer extends React.Component {
+export default class AvatarContainer extends React.Component {
     state = {
-        ImageSource: null,
+        ImageSource: require('./../assets/images/stub_user.png'),
+        loadAvatar:false
     };
 
     selectPhotoTapped() {
@@ -39,43 +32,27 @@ export default class ImagePickerContainer extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
+                this.setState({
+                    loadAvatar: true
+                });
+                // stub load image to server
+                setTimeout(() => {
+                    this.setState({
+                        ImageSource: source,
+                        loadAvatar: false
+                    });
+                }, 2000);
                 let source = {uri: response.uri};
-
                 // You can also display the image using data:
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
-                this.setState({
-                    ImageSource: source
-                });
             }
         });
     }
 
     render() {
         return (
-            <ControlPanelComponent selectPhoto={this.selectPhotoTapped.bind(this)}/>
+            <ControlPanelComponent selectPhoto={this.selectPhotoTapped.bind(this)} imageSource={this.state.ImageSource} {...this.state}/>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFF8E1'
-    },
-
-    ImageContainer: {
-        borderRadius: 10,
-        width: 250,
-        height: 250,
-        borderColor: '#9B9B9B',
-        borderWidth: 1 / PixelRatio.get(),
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#CDDC39',
-
-    },
-
-});
