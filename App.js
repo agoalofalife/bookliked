@@ -42,6 +42,8 @@ class App extends Component{
 
 // TODO repo scanner qrcode
 // https://github.com/moaazsidat/react-native-qrcode-scanner
+
+// fix compile camera https://github.com/react-native-community/react-native-camera/issues/1490
 const styles = StyleSheet.create({
   container: {
     flex: 1,
