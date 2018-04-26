@@ -8,7 +8,7 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "bundle-android":"react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
   },
   "dependencies": {
     "expo": "^26.0.0",
@@ -19,6 +19,7 @@
     "react-native-camera": "^1.1.1",
     "react-native-elements": "^1.0.0-beta4",
     "react-native-image-picker": "^0.26.7",
+    "react-native-modal": "^5.4.0",
     "react-native-qrcode-scanner": "^1.0.1",
     "react-native-scripts": "^1.13.2",
     "react-native-vector-icons": "^4.6.0",

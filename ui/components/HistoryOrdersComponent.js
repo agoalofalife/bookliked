@@ -15,8 +15,7 @@ export default () => {
             <TouchableOpacity style={styles.link}>
                 <Text style={styles.span}>Go back (n-1)</Text>
             </TouchableOpacity>
-            <Content>
-                <List>
+            <Content>                <List>
                     <ListItem>
                         <Body>
                         <Text>Kumar Pratik</Text>
