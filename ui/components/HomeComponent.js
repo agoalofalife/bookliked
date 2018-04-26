@@ -1,11 +1,17 @@
-import React from 'React';
+import React, {Component} from 'React';
 import {Container} from 'native-base';
-import DrawerContainer from './../../containers/DriverContainer'
+import DrawerContainer from '../../containers/DriwerContainer'
 
-export default () => {
-    return (
-        <Container style={{ backgroundColor:'white'}}>
-            <DrawerContainer/>
-        </Container>
-    )
+export default class HomeComponent extends Component{
+   // constructor(){
+   //     super()
+   //     console.log('HomeComponent', this)
+   // }
+    render(){
+        return (
+            <Container style={{ backgroundColor:'white'}}>
+                <DrawerContainer {...this.props}/>
+            </Container>
+        )
+    }
 }

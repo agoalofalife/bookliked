@@ -36,7 +36,7 @@ export const signInAction = (login, password) => {
             setTimeout(() => {
                 dispatch(addTokenAction('token'));
                 resolve()
-            }, 2000)
+            }, 1)
         })
 
     }

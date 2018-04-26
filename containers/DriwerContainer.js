@@ -5,6 +5,9 @@ import RegistrationQrCodeContainer from './../containers/RegistrationQrCodeConta
 import FooterComponent from './../ui/components/FooterNavigator';
 
 export default class DrawerContainer extends Component {
+    constructor(props){
+        super(props)
+    }
     closeDrawer() {
         this.drawer._root.close()
     }
@@ -15,7 +18,7 @@ export default class DrawerContainer extends Component {
         return (
             <Drawer
                 ref={(ref) => { this.drawer = ref; }}
-                content={<ImagePickerContainer/>}
+                content={<ImagePickerContainer {...this.props} />}
                 onClose={() => this.closeDrawer()} >
                 <Header style={{backgroundColor: "#fce82f"}}>
                     <Left>

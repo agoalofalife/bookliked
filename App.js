@@ -10,8 +10,10 @@ import { Card, Navigation } from 'react-router-navigation'
 import PrivateRoute from './hoc/PrivateRoute'
 import { Switch, Route, Redirect } from 'react-router'
 import AuthContainer from './containers/AuthContainer'
+import HistoryOrdersComponent from './ui/components/HistoryOrdersComponent'
 
 class App extends Component{
+
   render() {
     return (
       <View style={styles.container}>
@@ -20,11 +22,17 @@ class App extends Component{
         exact
         path="/"
         component={AuthContainer}/>
+
+        <Card
+            exact
+            path="/history-orders"
+            component={HistoryOrdersComponent}/>
         {/*<Card*/}
             {/*exact*/}
             {/*path="/home"*/}
             {/*component={HomeComponent}/>*/}
         {PrivateRoute(HomeComponent, this.props.isAuth, '/home')}
+        {/*{PrivateRoute(HomeComponent, this.props.isAuth, '/home')}*/}
 
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}

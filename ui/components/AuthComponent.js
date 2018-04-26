@@ -30,6 +30,7 @@ export default ({...props}) => {
 }
 const styles = StyleSheet.create({
         tabs: {
+            marginTop:40,
             borderRadius:50,
             width:350,
             alignSelf: "center"

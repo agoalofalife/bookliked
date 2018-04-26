@@ -8,15 +8,16 @@ import {Content,Spinner} from 'native-base';
 const list = [
             {
                 title: 'История покупок',
-                icon: 'shopping-basket'
+                icon: 'shopping-basket',
+                path:'history-orders'
             },
             {
                 title: 'История переводов',
-                icon: 'credit-card'
+                icon: 'credit-card',
             },
         ];
 
-export default ({loadAvatar=false, imageSource, ...props}) => {
+export default ({navigate, loadAvatar=false, imageSource, ...props}) => {
     return (
         <Content style={styles.content}>
             {loadAvatar ? <Spinner color='red' style={styles.spinner}/> : <Avatar
@@ -32,8 +33,10 @@ export default ({loadAvatar=false, imageSource, ...props}) => {
                 list.map((item, i) => (
                     <ListItem
                         key={i}
+                        component={item.component}
                         title={item.title}
                         leftIcon={{name: item.icon}}
+                        onPress={() => navigate.push(item.path)}
                     />
                 ))
             }

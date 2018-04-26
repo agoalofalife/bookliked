@@ -4,6 +4,9 @@ import ImagePicker from 'react-native-image-picker';
 import ControlPanelComponent from './../ui/components/ControlPanelComponent';
 
 export default class AvatarContainer extends React.Component {
+    constructor(props){
+        super(props)
+    }
     state = {
         ImageSource: require('./../assets/images/stub_user.png'),
         loadAvatar:false
@@ -52,7 +55,7 @@ export default class AvatarContainer extends React.Component {
 
     render() {
         return (
-            <ControlPanelComponent selectPhoto={this.selectPhotoTapped.bind(this)} imageSource={this.state.ImageSource} {...this.state}/>
+            <ControlPanelComponent navigate={this.props.history} selectPhoto={this.selectPhotoTapped.bind(this)} imageSource={this.state.ImageSource} {...this.state}/>
         )
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{PropTypes} from 'react';
 import {
     StyleSheet,
     Dimensions,
@@ -7,7 +7,7 @@ import {Button, Form, Item, Input, Label,Text } from 'native-base';
 
 const {width} = Dimensions.get('window');
 
-export default ({dispatchSignIn, navigateMenu}) => {
+const SignInComponent =  ({dispatchSignIn, navigateMenu}) => {
     let _login, _password;
 
     return (
@@ -38,4 +38,6 @@ const styles = StyleSheet.create({
         marginTop:20}
     },
 );
+
+export default SignInComponent;
 
