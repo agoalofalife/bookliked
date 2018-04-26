@@ -18,10 +18,14 @@ class App extends Component{
     return (
       <View style={styles.container}>
     <Navigation hideNavBar>
-      <Card
-        exact
-        path="/"
-        component={AuthContainer}/>
+      {/*<Card*/}
+        {/*exact*/}
+        {/*path="/"*/}
+        {/*component={AuthContainer}/>*/}
+        <Card
+            exact
+            path="/"
+            component={HomeComponent}/>
 
         <Card
             exact
@@ -31,7 +35,7 @@ class App extends Component{
             {/*exact*/}
             {/*path="/home"*/}
             {/*component={HomeComponent}/>*/}
-        {PrivateRoute(HomeComponent, this.props.isAuth, '/home')}
+        {/*{PrivateRoute(HomeComponent, this.props.isAuth, '/home')}*/}
         {/*{PrivateRoute(HomeComponent, this.props.isAuth, '/home')}*/}
 
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}

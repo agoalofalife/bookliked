@@ -5,7 +5,8 @@ import {StyleSheet} from "react-native";
 export default () => {
     return (
     <BottomNavigation lazy={false} tabActiveTintColor="black" tabBarStyle={styles.bottom}>
-    <Tab label="Регистрация чеков" path="/home"  />
+    <Tab label="Регистрация чеков" path="/"  />
+    {/*<Tab label="Регистрация чеков" path="/home"  />*/}
     <Tab label="Призы" path="/prizes"/>
     </BottomNavigation>
     )
