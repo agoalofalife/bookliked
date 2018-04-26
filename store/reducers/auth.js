@@ -1,12 +1,12 @@
 import {ADD_TOKEN, REMOVE_TOKEN, LOAD_AUTH} from './../actions/constants'
 
-const storeAuth = {
+const storeDefault = {
  token:null,
  isAuth:false,
  load:false
 };
 
-export default (state = storeAuth, action) => {
+export default (state = storeDefault, action) => {
     switch (action.type) {
         case ADD_TOKEN:
         	return {
@@ -15,8 +15,10 @@ export default (state = storeAuth, action) => {
     		token: action.token,
         	};
         case REMOVE_TOKEN:
-            return {...state,
-    		token: null
+            return {
+            load:false,
+    		token: null,
+            isAuth:false,
         	};
         case LOAD_AUTH:
             return {
