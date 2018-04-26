@@ -2,6 +2,7 @@
   "name": "Bananas",
   "displayName": "Bananas",
   "expo": {
-    "sdkVersion": "26.0.0"
+    "sdkVersion": "26.0.0",
+    "orientation": "portrait"
   }
 }
