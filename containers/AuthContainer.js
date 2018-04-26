@@ -15,16 +15,16 @@ class AuthContainer extends Component{
                  if (token === null){
                      this.props.dispatchIsNotLoadAuth()
                  } else {
-                     this.props.history.push('/menu')
+                     this.props.history.push('/home')
                  }
              })
          } else {
-             this.props.history.push('/menu')
+             this.props.history.push('/home')
          }
     }
 
     navigateMenu(){
-        this.props.history.push('/menu')
+        this.props.history.push('/home')
     }
 	render(){
 		return (

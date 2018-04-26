@@ -13,7 +13,7 @@ export default ({dispatchSignIn, navigateMenu}) => {
     return (
         <Form style={styles.form}>
             <Item stackedLabel>
-                <Label>Логин</Label>
+                <Label>Имя</Label>
                 <Input onChangeText={input => _login = input}/>
             </Item>
             <Item stackedLabel last>

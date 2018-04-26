@@ -5,8 +5,6 @@ import {
 } from 'react-native';
 
 import HomeComponent from './ui/components/HomeComponent'
-import RegistrationComponent from './ui/components/RegistrationQrCodeComponent'
-
 import { connect } from 'react-redux';
 import { Card, Navigation } from 'react-router-navigation'
 import PrivateRoute from './hoc/PrivateRoute'
@@ -18,15 +16,15 @@ class App extends Component{
     return (
       <View style={styles.container}>
     <Navigation hideNavBar>
-      {/*<Card*/}
-        {/*exact*/}
-        {/*path="/"*/}
-        {/*component={AuthContainer}/>*/}
-        <Card
-            exact
-            path="/"
-            component={HomeComponent}/>
-        {PrivateRoute(HomeComponent, this.props.isAuth, '/menu')}
+      <Card
+        exact
+        path="/"
+        component={AuthContainer}/>
+        {/*<Card*/}
+            {/*exact*/}
+            {/*path="/home"*/}
+            {/*component={HomeComponent}/>*/}
+        {PrivateRoute(HomeComponent, this.props.isAuth, '/home')}
 
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
         {/*<Card path="/menu" component={PrivateRoute(FooterNavigator, this.props.isAuth)} />*/}
