@@ -44,6 +44,9 @@ class App extends Component{
 // https://github.com/moaazsidat/react-native-qrcode-scanner
 
 // fix compile camera https://github.com/react-native-community/react-native-camera/issues/1490
+
+// TODO Run app in mobile https://developer.android.com/studio/run/device#developer-device-options
+// https://stackoverflow.com/questions/44446523/unable-to-load-script-from-assets-index-android-bundle-on-windows
 const styles = StyleSheet.create({
   container: {
     flex: 1,

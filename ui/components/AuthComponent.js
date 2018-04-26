@@ -6,7 +6,7 @@ import {
 
 import {Tabs,Tab,Container,Content} from 'native-base';
 import SignInComponent from './SignInComponent';
-import RegistrationComponent from './RegistrationQrCodeComponent';
+import RegisterFormComponent from './RegisterFormComponent';
 import StartPageComponent from './StartPageComponent';
 import {Spinner} from 'native-base';
 
@@ -21,7 +21,7 @@ export default ({...props}) => {
                     <SignInComponent {...props}/>
                 </Tab>
                 <Tab heading="Регистрация">
-                    <RegistrationComponent/>
+                    <RegisterFormComponent/>
                 </Tab>
             </Tabs>}
         </Content>

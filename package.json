@@ -7,14 +7,15 @@
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios"
+    "ios": "react-native-scripts ios",
+    "bundle-android":"react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
   },
   "dependencies": {
     "expo": "^26.0.0",
     "lodash": "^4.17.5",
     "native-base": "^2.4.2",
     "react": "16.3.1",
-    "react-native": "^0.54.2",
+    "react-native": "^0.55.2",
     "react-native-camera": "^1.1.1",
     "react-native-elements": "^1.0.0-beta4",
     "react-native-image-picker": "^0.26.7",
