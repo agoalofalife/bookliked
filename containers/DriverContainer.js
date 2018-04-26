@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer, Header, Left,Button,Icon,Title, Body,Footer } from 'native-base';
 import ImagePickerContainer from "./AvatarContainer";
-import RegistrationQrCodeComponent from './../ui/components/RegistrationQrCodeComponent'
+import RegistrationQrCodeContainer from './../containers/RegistrationQrCodeContainer'
 import FooterComponent from './../ui/components/FooterNavigator';
 
 export default class DrawerContainer extends Component {
@@ -27,7 +27,7 @@ export default class DrawerContainer extends Component {
                     <Title style={{color:'black', fontFamily: "Nexa_Script_Heavy"}}>Bananas</Title>
                     </Body>
                 </Header>
-                <RegistrationQrCodeComponent/>
+                <RegistrationQrCodeContainer/>
                 <Footer>
                     <FooterComponent/>
                 </Footer>

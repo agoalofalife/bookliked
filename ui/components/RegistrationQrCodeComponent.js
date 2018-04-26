@@ -4,29 +4,31 @@ import {
     // Text,
     TouchableOpacity,
     Linking,
+    View
 } from 'react-native';
 import {Button, Content,Text } from 'native-base';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 
-export default () => (
-    <Content>
-    {/*<Content contentContainerStyle={styles.button}>*/}
-        <QRCodeScanner
+export default ({...props}) => (
+    <Content contentContainerStyle={styles.button}>
+        {props.isScanActiveCamera ? <QRCodeScanner
+            showMarker={true}
             onRead={(e) => {
-                Linking
-                    .openURL(e.data)
-                    .catch(err => console.error('An error occured', err));
+                console.info(e)
+                // Linking
+                //     .openURL(e.data)
+                //     .catch(err => console.error('An error occured', err));
             }}
-            bottomContent={
-                <Button rounded info style={styles.button}>
-                    <Text>Сканировать QR code</Text>
-                </Button>
-            }
-        />
-    {/*<Button rounded info>*/}
-        {/*<Text>Сканировать QR code</Text>*/}
-    {/*</Button>*/}
+            // bottomContent={
+            //     <Button rounded info style={styles.button}>
+            //         <Text>Сканировать QR code</Text>
+            //     </Button>
+            // }
+        /> : null}
+        { !props.isScanActiveCamera ? <Button rounded info onPress={props.isActiceCamera} >
+            <Text>Сканировать QR code</Text>
+        </Button> : null}
     </Content>
 );
 
