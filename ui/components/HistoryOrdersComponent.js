@@ -1,4 +1,5 @@
 import React, {Component} from 'React';
+import { Redirect } from 'react-router'
 import {TouchableOpacity, StyleSheet, View} from 'react-native'
 import {Container, Text, Header, ListItem,Content,List,Left,Body,Right,Title} from 'native-base';
 import Modal from "react-native-modal";
@@ -13,6 +14,7 @@ export default class HistoryOrdersComponent extends Component{
         this.setState({
             visibleModal:true
         })
+        // load info about
     }
     render(){
         return (
@@ -24,8 +26,8 @@ export default class HistoryOrdersComponent extends Component{
                     </Body>
                     <Right />
                 </Header>
-                <TouchableOpacity style={styles.link}>
-                    <Text style={styles.span}>Go back (n-1)</Text>
+                <TouchableOpacity style={styles.link} onPress={() => this.props.history.goBack()}>
+                    <Text style={styles.span}>Вернуться</Text>
                 </TouchableOpacity>
                 <Content>
                     <Modal isVisible={this.state.visibleModal}
