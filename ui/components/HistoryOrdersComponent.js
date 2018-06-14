@@ -1,7 +1,6 @@
 import React, {Component} from 'React';
-import { Redirect } from 'react-router'
 import {TouchableOpacity, StyleSheet, View} from 'react-native'
-import {Container, Text, Header, ListItem,Content,List,Left,Body,Right,Title} from 'native-base';
+import {Container, Text, Header, ListItem,Content,List,Left,Body,Right,Title, CardItem, Card} from 'native-base';
 import Modal from "react-native-modal";
 import {Icon} from 'react-native-elements'
 
@@ -46,46 +45,62 @@ export default class HistoryOrdersComponent extends Component{
                                borderColor: "rgba(0, 0, 0, 0.1)"}}>
 
 
-                        <Icon iconStyle={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignSelf:"flex-end",textAlign: 'right' }}
-                                onPress={() => {this.setState({
-                                    visibleModal:false
-                                })}}
-                                name='x'
-                                type='foundation'
-                                color='black'
+
+                        <View style={{ flex: 1 ,  width: '100%'}}>
+                            <Icon iconStyle={{textAlign: 'right' , padding: 10}}
+                                  onPress={() => {this.setState({
+                                      visibleModal:false
+                                  })}}
+                                  name='x'
+                                  type='foundation'
+                                  color='black'
                             />
+                            <Content padder>
+                            <Card style={{ flex:1}}>
+                                <CardItem header bordered>
+                                    <Text>Покупка</Text>
+                                </CardItem>
+                                <CardItem bordered>
+                                    <Body>
+                                    <Text>
+                                       Банан - желтый 1 шт
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                                <CardItem bordered>
+                                    <Body>
+                                    <Text>
+                                        Банан - желтый - бразил. 1 шт
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                                <CardItem bordered>
+                                    <Body>
+                                    <Text>
+                                        Банан - мараканский. 1 шт
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                                <CardItem footer bordered>
+                                    <Text>Сумма 200 $</Text>
+                                </CardItem>
+                            </Card>
+                            </Content>
+                        </View>
                     </Modal>
                     <List>
-                        <ListItem>
-                            <Body>
-                            <Text>Покупка от 20.02.2018</Text>
-                            </Body>
-                            <Right>
-                                <TouchableOpacity onPress={this.showModal.bind(this)}>
-                                <Text note>Посмотреть</Text>
-                                </TouchableOpacity>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Body>
-                            <Text>Покупка от 20.02.2018</Text>
-                            </Body>
-                            <Right>
-                                <TouchableOpacity onPress={this.showModal.bind(this)}>
-                                    <Text note>Посмотреть</Text>
-                                </TouchableOpacity>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Body>
-                            <Text>Покупка от 20.02.2018</Text>
-                            </Body>
-                            <Right>
-                                <TouchableOpacity onPress={this.showModal.bind(this)}>
-                                    <Text note>Посмотреть</Text>
-                                </TouchableOpacity>
-                            </Right>
-                        </ListItem>
+                        {[...Array(3)].map((x, i) =>
+                            <ListItem key={i}>
+                                <Body>
+                                <Text>Покупка от 20.02.2018</Text>
+                                </Body>
+                                <Right>
+                                    <TouchableOpacity onPress={this.showModal.bind(this)}>
+                                        <Text note>Посмотреть</Text>
+                                    </TouchableOpacity>
+                                </Right>
+                            </ListItem>
+                        )}
                     </List>
                 </Content>
                 {/*<Button onPress={() => <Redirect to="/home" />}><Text>History orders</Text></Button>*/}

@@ -14,6 +14,7 @@ const list = [
             {
                 title: 'История переводов',
                 icon: 'credit-card',
+                path:'history-transaction'
             },
         ];
 

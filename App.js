@@ -11,6 +11,7 @@ import PrivateRoute from './hoc/PrivateRoute'
 import { Switch, Route, Redirect } from 'react-router'
 import AuthContainer from './containers/AuthContainer'
 import HistoryOrdersComponent from './ui/components/HistoryOrdersComponent'
+import HistoryTransactionsComponent from './ui/components/HistoryTransactionsComponent'
 
 class App extends Component{
 
@@ -31,6 +32,10 @@ class App extends Component{
             exact
             path="/history-orders"
             component={HistoryOrdersComponent}/>
+        <Card
+            exact
+            path="/history-transaction"
+            component={HistoryTransactionsComponent}/>
         {/*<Card*/}
             {/*exact*/}
             {/*path="/home"*/}
